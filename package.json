@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "parcel index.html",
+    "lint:init": "eslint --init",
+    "format": "prettier --write \"*.{js,jsx,json,css}\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,6 +20,7 @@
   },
   "homepage": "https://github.com/joaquimbernaltes/ReactCurs#readme",
   "dependencies": {
+    "prettier": "^2.2.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
