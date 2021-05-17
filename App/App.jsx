@@ -1,4 +1,5 @@
 import React from 'react';
+import './App.css'
 
 //Array amb objectes
 const wishes = [
@@ -12,16 +13,16 @@ const wishes = [
 ]
 
 const App = () => 
-    <div>
+    <div className="app">
         <h1>Pràctica 1 en React</h1>
-        <fieldset>
-            <legend>Introduiex un nou dessitg</legend>
-            <input placeholder="Introdueix el teu dessitg aqui  " />
+        <fieldset className="wish-input">
+            <legend className="wish-input__label">Introduiex un nou dessitg</legend>
+            <input className="wish-input__field" placeholder="Introdueix el teu dessitg aqui  " />
         </fieldset>
-        <ul>
-            {/* Imprimir l'array */}
+        <ul className="wish-list">
+            {/* Imprimir l'array i tachar-la amb el done ? true, es pot fer ús de ClassNames*/}
             {wishes.map(({ text, done}, id) => (
-                <li>
+                <li key={text} className={`wish-list__item ${done ? 'wish-list__item--done label':''}`}>
                     <label htmlFor={`wish${id}`}>
                         <input id={`wish${id}`} type="checkbox" checked={done} />
                         {text}
@@ -29,7 +30,7 @@ const App = () =>
                 </li>
             ))}
         </ul>
-        <button type="button">Guardar</button>
+        <button className="wish-clear" type="button">Guardar</button>
     </div>;
 
 export default App;
