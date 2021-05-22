@@ -23,8 +23,12 @@ const App = () => {
         {/* Imprimeix el input de WishInput */}
         <WishInput onNewWish={wish => setWishes([wish,...wishes])}/>
         
-        <WishList wishes={wishes} />
-        <button className="wish-clear" type="button">Guardar</button>
+        <WishList wishes={wishes} onWishesChange={setWishes} />
+        <button
+            type="button"
+            className="wish-clear"
+            onClick={() => setWishes(wishes.filter(wish => !wish.done))}
+        >Guardar</button>
     </div>
     );
 };

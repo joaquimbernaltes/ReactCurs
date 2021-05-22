@@ -1,23 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import WishItem from './WishItem';
 
 //Imprimix la llista 
 //Importem la array 
-const WishList = ({ wishes }) => (
+const WishList = ({ wishes, onWishesChange  }) => (
     <ul className="wish-list">
-            {/* Imprimir l'array i tachar-la amb el done ? true, es pot fer ús de ClassNames*/}
-            {wishes.map(({ text, done}, id) => (
-                <li 
-                    key={text} 
-                    className={classNames('wish-list__item', {
-                        'wish-list__item--done label': done,
-                    })}>
-                    
-                    <input id={`wish${id}`} type="checkbox" checked={done} />
-                    <label htmlFor={`wish${id}`}>{text}</label>
-                </li>
-            ))}
+        {wishes.map(({ text, done }, i) => (
+            <WishItem
+                text={text}
+                done={done}
+                onDoneChange={(value) => {
+                const updatedWishes = [...wishes];
+                updatedWishes[i].done = value;
+                onWishesChange(updatedWishes);
+                }}
+                id={`wish${i}`}
+                key={text}
+            />
+        ))}
     </ul>
 );
 
