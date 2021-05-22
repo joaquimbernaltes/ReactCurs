@@ -1,5 +1,8 @@
 import React from 'react';
 import './App.css'
+import WishInput from './WishInput';
+import WishList from './WishList';
+
 
 //Array amb objectes
 const wishes = [
@@ -12,25 +15,15 @@ const wishes = [
     { text: 'Tindre parella', done: false},
 ]
 
-const App = () => 
+const App = () => (
     <div className="app">
         <h1>Pràctica 1 en React</h1>
-        <fieldset className="wish-input">
-            <legend className="wish-input__label">Introduiex un nou dessitg</legend>
-            <input className="wish-input__field" placeholder="Introdueix el teu dessitg aqui  " />
-        </fieldset>
-        <ul className="wish-list">
-            {/* Imprimir l'array i tachar-la amb el done ? true, es pot fer ús de ClassNames*/}
-            {wishes.map(({ text, done}, id) => (
-                <li key={text} className={`wish-list__item ${done ? 'wish-list__item--done label':''}`}>
-                    <label htmlFor={`wish${id}`}>
-                        <input id={`wish${id}`} type="checkbox" checked={done} />
-                        {text}
-                    </label>
-                </li>
-            ))}
-        </ul>
+        {/* Imprimeix el input de WishInput */}
+        <WishInput />
+        
+        <WishList wishes={wishes} />
         <button className="wish-clear" type="button">Guardar</button>
-    </div>;
+    </div>
+);
 
 export default App;
